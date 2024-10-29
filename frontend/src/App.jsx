@@ -14,35 +14,35 @@ import Home from './pages/home';
 import { AuthProvider } from './components/AuthContext';
 import ManagerDash from './pages/managerDash/managerdash';
 import ManageEmployees from './pages/managerDash/manageEmployees';
-import ManageExhibits from './pages/managerDash/manageExhibits'; // Import the new component
+import ManageExhibits from './pages/managerDash/manageExhibits';
 import Footer from './components/Footer';
-
 
 function App() {
   return (
     <AuthProvider>
-    <Router>
-      <Navbar />
-      <Routes>  
-        <Route path='/' element={<Home/>} />
-        <Route path='/animals' element={<Animal />} />
-        <Route path='/exhibits' element={<Exhibits />} />
+      {/* Set basename to '/coogzoo' */}
+      <Router basename="/coogzoo">
+        <Navbar />
+        <Routes>  
+          <Route path='/' element={<Home/>} />
+          <Route path='/animals' element={<Animal />} />
+          <Route path='/exhibits' element={<Exhibits />} />
+            <Route path='/membership' element={<Membership />} />
 
-        <Route element={<PrivateRoutes />}>
-          <Route path='/tickets' element={<Tickets />} />
-          <Route path='/membership' element={<Membership />} />
-          <Route path='/account' element={<Account/>} />
-          <Route path='/manager-dashboard/*' element={<ManagerDash />} />
-          <Route path='/manager-dashboard/manage-employees' element={<ManageEmployees />} />
-          <Route path='/manager-dashboard/manage-exhibits' element={<ManageExhibits />} /> {/* Add the ManageExhibits route */}
-        </Route>
-        <Route path='/events' element={<Events />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/employee-dashboard' element={<EmployeeDash/>} />
+          <Route element={<PrivateRoutes />}>
+            <Route path='/tickets' element={<Tickets />} />
+            <Route path='/account' element={<Account/>} />
+            <Route path='/manager-dashboard/*' element={<ManagerDash />} />
+            <Route path='/manager-dashboard/manage-employees' element={<ManageEmployees />} />
+            <Route path='/manager-dashboard/manage-exhibits' element={<ManageExhibits />} />
+          </Route>
 
-      </Routes>
-      <Footer /> 
-    </Router>
+          <Route path='/events' element={<Events />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/employee-dashboard' element={<EmployeeDash/>} />
+        </Routes>
+        <Footer /> 
+      </Router>
     </AuthProvider>
   );
 }

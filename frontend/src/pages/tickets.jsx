@@ -26,7 +26,7 @@ const TicketsPage = () => {
   const fetchPurchasedTickets = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:5000/purchased-tickets?email=${userEmail}`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/purchased-tickets?email=${userEmail}`);
       if (response.ok) {
         const data = await response.json();
         setPurchasedTickets(data);
